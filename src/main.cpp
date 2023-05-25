@@ -3,18 +3,18 @@
 #include <WiFi101.h>
 
 char ssid[] = "BELL209";            
-char pass[] = "65E14F2C5217";       // your network password between the " "
+char pass[] = "65E14F2C5217";       
 
-// char ssid[] = "UNIFI_IDO1";      //  your network SSID (name) between the " "
-// char pass[] = "42Bidules!";      // your network password between the " "
+// char ssid[] = "UNIFI_IDO1";      
+// char pass[] = "42Bidules!";      
 
-int status = WL_IDLE_STATUS;        //connection status
+int status = WL_IDLE_STATUS;        
 
-WiFiServer server(80);              //server socket
+WiFiServer server(80);              
 WiFiClient client = server.available();
 
-const int echoPin = 1;              // Echo
-const int trigPin = 2;              // Trigger
+const int echoPin = 1;              
+const int trigPin = 2;              
 const int soundPin = A0;
 
 long duration, cm, inches;
@@ -23,16 +23,16 @@ int bikeCounter = 0;
 int vehicleCounter = 0;
 
 void printWifiStatus() {
-  // print the SSID of the network you're attached to:
+  
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
 
-  // print your board's IP address:
+  
   IPAddress ip = WiFi.localIP();
   Serial.print("IP Address: ");
   Serial.println(ip);
 
-  // print the received signal strength:
+  
   long rssi = WiFi.RSSI();
   Serial.print("signal strength (RSSI):");
   Serial.print(rssi);
@@ -51,14 +51,13 @@ void enable_WiFi() {
 }
 
 void connect_WiFi() {
-  // attempt to connect to Wifi network:
+  
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(ssid);
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    
     status = WiFi.begin(ssid, pass);
 
-    // wait 10 seconds for connection:
     delay(10000);
   }
 }
@@ -80,7 +79,7 @@ void printWEB() {
             client.print("tr:hover {background-color: #bcbcbc;}");
             client.print("td {border: none;padding: 12px;}");
             client.print("</style>");
-            client.print("<meta http-equiv=\"refresh\" content=\"3\">"); // Auto-refresh every 3 seconds
+            client.print("<meta http-equiv=\"refresh\" content=\"3\">"); 
             client.print("</head><body>");
             client.print("<h1>Compteur de Traffic</h1>");
             client.print("<table><tr>");
@@ -106,10 +105,10 @@ void printWEB() {
 }
 
 void setup() {
-  // Serial Port begin
+  
   Serial.begin(9600);
 
-  // Define inputs and outputs
+  
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(soundPin, INPUT);
@@ -124,23 +123,18 @@ void setup() {
 }
 
 void loop() {
-  // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
-  // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
+  
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Read the signal from the sensor: a HIGH pulse whose
-  // duration is the time (in microseconds) from the sending
-  // of the ping to the reception of its echo off an object.
-  // pinMode(echoPin, INPUT);
   duration = pulseIn(echoPin, HIGH);
 
-  // Convert the time into a distance
-  cm = (duration / 2) / 29.1;     // Divide by 29.1 or multiply by 0.0343
-  inches = (duration / 2) / 74;   // Divide by 74 or multiply by 0.0135
+  
+  cm = (duration / 2) / 29.1;     
+  inches = (duration / 2) / 74;   
 
   int val;
   val = analogRead(soundPin); 
