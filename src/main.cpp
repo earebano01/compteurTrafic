@@ -135,10 +135,10 @@ void loop() {
   
   cm = (duration / 2) / 29.1;     
   inches = (duration / 2) / 74;   
-
+ 
   int val;
   val = analogRead(soundPin); 
-  Serial.println(val);
+  // Serial.println(val);
   
   // if (val > 150){
     if (val > 65){
