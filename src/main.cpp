@@ -14,20 +14,20 @@ Version : 0.0.1
 #include <WiFi101.h>
 
 /*-----on definit notre SSID et notre mot de passe------*/
-char ssid[] = "BELL209";            
-char pass[] = "65E14F2C5217";       
+// char ssid[] = "BELL209";            
+// char pass[] = "65E14F2C5217";       
 
-// char ssid[] = "UNIFI_IDO1";      
-// char pass[] = "42Bidules!";      
+char ssid[] = "UNIFI_IDO1";      
+char pass[] = "42Bidules!";      
 
-int status = WL_IDLE_STATUS;        //connection status
+int status = WL_IDLE_STATUS;        
 
-WiFiServer server(80);              //server socket
+WiFiServer server(80);             
 WiFiClient client = server.available();
 
-/*-----on definit le delai different qu'on utilise dans notre projet*/
-const int echoPin = 1;              // Echo
-const int trigPin = 2;              // Trigger
+/*-----on definit le delai different qu'on utilise dans notre projet-----*/
+const int echoPin = 1;              
+const int trigPin = 2;              
 const int soundPin = A0;
 
 long duration, cm, inches;
@@ -52,7 +52,6 @@ void printWifiStatus() {
   Serial.print("To see this page in action, open a browser to http://");
   Serial.println(ip);
 }
-
 
 /*-----une fonction pour vérifier la version du firmware-----*/
 void enable_WiFi() {
@@ -90,7 +89,7 @@ void printWEB() {
             client.print("tr:hover {background-color: #bcbcbc;}");
             client.print("td {border: none;padding: 12px;}");
             client.print("</style>");
-            client.print("<meta http-equiv=\"refresh\" content=\"3\">"); // Auto-refresh every 3 seconds
+            client.print("<meta http-equiv=\"refresh\" content=\"3\">");                            // actualisation automatique de la page web toutes les 3 secondes
             client.print("</head><body>");
             client.print("<h1>Compteur de Traffic</h1>");
             client.print("<table><tr>");

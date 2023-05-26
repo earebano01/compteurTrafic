@@ -80,6 +80,7 @@ try:
 except KeyboardInterrupt:
     pass
 
+#on ferme la connection
 ser.close()
 cursor.close()
 conn.close()
