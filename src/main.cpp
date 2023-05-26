@@ -135,7 +135,7 @@ void setup() {
 void loop() {
   /*-----Par défaut, le capteur est déclenché par une impulsion haute, et pour garantir l'obtention d'une impulsion haute propre, on fournit une valeur basse.-----*/
   digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
+  delayMicroseconds(2); 
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
