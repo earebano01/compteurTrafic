@@ -152,7 +152,7 @@ void loop() {
   val = analogRead(soundPin); 
   // Serial.println(val);         //on a commenté cette ligne parce qu'on l'utilise seulement pour tester et observer les valeurs sur le moniteur série
   
-  // if (val > 150 && cm < 200){              // la condition qu'on a utilisée dans le test réel concerne le passage d'une voiture dans la rue
+  // if (val > 150 && cm > 70 && cm < 200){              // la condition qu'on a utilisée dans le test réel concerne le passage d'une voiture dans la rue
     if (val > 65 && cm > 10){
     Serial.print(val);
     vehicleCounter++;
